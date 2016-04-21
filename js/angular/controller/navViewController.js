@@ -205,7 +205,16 @@ function($scope, $element, $attrs, $compile, $controller, $ionicNavBarDelegate, 
       viewElement = viewElements.eq(x);
       if (navViewAttr(viewElement) == VIEW_STATUS_ACTIVE) {
         viewScope = viewElement.scope();
-        viewScope && viewScope.$emit(ev.name.replace('Tabs', 'View'), data);
+        if ( viewScope ) {
+          // bubble the event up from the parent
+          var parent = viewScope.$parent;
+          if ( parent ) {
+            parent.$emit(ev.name.replace('Tabs', 'View'), data);
+          }
+          // also fire the event downward in case any child view have
+          // timers, etc and need to clean up
+          viewScope.$broadcast(ev.name.replace('Tabs', 'View'), data);
+        }
         break;
       }
     }

@@ -63,9 +63,11 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
           for (x = 0, l = viewElements.length; x < l; x++) {
             viewEle = viewElements.eq(x);
 
-            if (viewEle.data(DATA_ELE_IDENTIFIER) === enteringEleIdentifier) {
+            var elementIdentifierValue = viewEle.data(DATA_ELE_IDENTIFIER);
+            if (elementIdentifierValue === enteringEleIdentifier) {
               // we found an existing element in the DOM that should be entering the view
-              if (viewEle.data(DATA_NO_CACHE)) {
+              var noCacheValue = viewEle.data(DATA_NO_CACHE);
+              if (noCacheValue) {
                 // the existing element should not be cached, don't use it
                 viewEle.data(DATA_ELE_IDENTIFIER, enteringEleIdentifier + ionic.Utils.nextUid());
                 viewEle.data(DATA_DESTROY_ELE, true);
@@ -304,26 +306,44 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
 
           if (step == 'after') {
             if (enteringScope) {
-              enteringScope.$emit('$ionicView.enter', enteringData);
+              if ( enteringScope.$parent ) {
+                enteringScope.$parent.$emit('$ionicView.enter', enteringData);
+              }
+              enteringScope.$broadcast('$ionicView.enter', enteringData);
             }
 
             if (leavingScope) {
-              leavingScope.$emit('$ionicView.leave', leavingData);
+              if ( leavingScope.$parent ) {
+                leavingScope.$parent.$emit('$ionicView.leave', leavingData);
+              }
+              leavingScope.$broadcast('$ionicView.leave', leavingData);
 
             } else if (enteringScope && leavingData && leavingData.viewId) {
-              enteringScope.$emit('$ionicNavView.leave', leavingData);
+              if ( enteringScope.$parent ) {
+                enteringScope.$parent.$emit('$ionicNavView.leave', leavingData);
+              }
+              enteringScope.$broadcast('$ionicNavView.leave', leavingData);
             }
           }
 
           if (enteringScope) {
-            enteringScope.$emit('$ionicView.' + step + 'Enter', enteringData);
+            if ( enteringScope.$parent ) {
+              enteringScope.$parent.$emit('$ionicView.' + step + 'Enter', enteringData);
+            }
+            enteringScope.$broadcast('$ionicView.' + step + 'Enter', enteringData);
           }
 
           if (leavingScope) {
-            leavingScope.$emit('$ionicView.' + step + 'Leave', leavingData);
+            if ( leavingScope.$parent ) {
+              leavingScope.$parent.$emit('$ionicView.' + step + 'Leave', leavingData);
+            }
+            leavingScope.$broadcast('$ionicView.' + step + 'Leave', leavingData);
 
           } else if (enteringScope && leavingData && leavingData.viewId) {
-            enteringScope.$emit('$ionicNavView.' + step + 'Leave', leavingData);
+            if ( enteringScope.$parent ) {
+              enteringScope.$parent.$emit('$ionicNavView.' + step + 'Leave', leavingData);
+            }
+            enteringScope.$broadcast('$ionicNavView.' + step + 'Leave', leavingData);
           }
         },
 
