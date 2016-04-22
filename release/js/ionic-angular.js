@@ -12996,7 +12996,8 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
       disableScroll: '@',
       onSlideChanged: '&',
       activeSlide: '=?',
-      bounce: '@'
+      bounce: '@',
+      delegateHandle: '@'
     },
     controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
       var _this = this;
@@ -13068,7 +13069,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
       this.__slider = slider;
 
       var deregisterInstance = $ionicSlideBoxDelegate._registerInstance(
-        slider, $attrs.delegateHandle, function() {
+        slider, $scope.delegateHandle, function() {
           return $ionicHistory.isActiveScope($scope);
         }
       );
