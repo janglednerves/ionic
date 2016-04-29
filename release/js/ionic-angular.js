@@ -12989,6 +12989,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
     transclude: true,
     scope: {
       autoPlay: '=',
+      slideDuration: '@',
       doesContinue: '@',
       slideInterval: '@',
       showPager: '@',
@@ -13006,6 +13007,10 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
       var bouncing = ($scope.$eval($scope.bounce) !== false); //Default to true
       var shouldAutoPlay = isDefined($attrs.autoPlay) ? !!$scope.autoPlay : false;
       var slideInterval = shouldAutoPlay ? $scope.$eval($scope.slideInterval) || 4000 : 0;
+        var duration = shouldAutoPlay ? $scope.$eval($scope.slideDuration) || $scope.slideDuration : 300;
+
+        console.log ('$scope.slideDuration', $scope.slideDuration);
+        console.log ('duration', duration);
 
       var slider = new ionic.views.Slider({
         el: $element[0],
@@ -13013,6 +13018,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
         continuous: continuous,
         startSlide: $scope.activeSlide,
         bouncing: bouncing,
+        speed: duration,
         slidesChanged: function() {
           $scope.currentSlide = slider.currentIndex();
 
