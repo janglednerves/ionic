@@ -10,7 +10,7 @@ echo "#####"
 function init {
   BOWER_DIR=$HOME/ionic-bower
 
-  ../clone/clone.sh --repository="driftyco/ionic-bower" \
+  ../clone/clone.sh --repository="ionic-bower" \
     --depth="1" \
     --directory="$BOWER_DIR" \
     --branch="master"
@@ -46,6 +46,9 @@ function run {
 
   echo "-- Updating codename in ionic-bower to $CODENAME"
   replaceJsonProp "bower.json" "codename" "$CODENAME"
+  
+  git config --global user.email "hi@ionicframework.com"
+  git config --global user.name "Ionitron"
 
   git add -A
   git commit -am "release: v$VERSION"

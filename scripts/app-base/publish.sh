@@ -11,7 +11,7 @@ function init {
   APPBASE_DIR=$HOME/ionic-app-base
   APPBASE_LIB_DIR=$APPBASE_DIR/www/lib/ionic
 
-  ../clone/clone.sh --repository="driftyco/ionic-app-base" \
+  ../clone/clone.sh --repository="ionic-app-base" \
     --depth="1" \
     --directory="$APPBASE_DIR" \
     --branch="master"
@@ -34,6 +34,9 @@ function run {
   replaceJsonProp "$APPBASE_DIR/bower.json" "ionic" "driftyco\/ionic-bower#$VERSION"
 
   cd $APPBASE_DIR
+
+  git config --global user.email "hi@ionicframework.com"
+  git config --global user.name "Ionitron"
 
   git add -A
   git commit -am "release: update ionic to v$VERSION"
