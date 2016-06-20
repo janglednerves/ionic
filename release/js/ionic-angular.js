@@ -13121,7 +13121,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
       var bouncing = ($scope.$eval($scope.bounce) !== false); //Default to true
       var shouldAutoPlay = isDefined($attrs.autoPlay) ? !!$scope.autoPlay : false;
       var slideInterval = shouldAutoPlay ? $scope.$eval($scope.slideInterval) || 4000 : 0;
-        var duration = shouldAutoPlay ? $scope.$eval($scope.slideDuration) || $scope.slideDuration : 300;
+      var duration = shouldAutoPlay ? $scope.$eval($scope.slideDuration) || $scope.slideDuration : 300;
 
         // console.log ('$scope.slideDuration', $scope.slideDuration);
         // console.log ('duration', duration);
