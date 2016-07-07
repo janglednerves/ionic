@@ -17,9 +17,9 @@ module.exports = function jekyll(renderDocsProcessor) {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
       });
       docs.forEach(function(doc, i) {
-        docs[i].URL = doc.outputPath.replace('docs/v2//','docs/v2/')
-                                    .replace('/index.md','')
-                                    .replace('//home/ubuntu/ionic/ionic', '')
+        docs[i].URL = doc.outputPath.replace('docs/v2//', 'docs/v2/')
+                                    .replace('/index.md', '')
+                                    .replace('//home/ubuntu/ionic/src', '')
                                     .replace('//', '/');
         if (docs[i].relativePath) {
           docs[i].relativePath = doc.relativePath
@@ -37,7 +37,8 @@ module.exports = function jekyll(renderDocsProcessor) {
         docType: 'api-menu-flat-version',
         id: 'api-menu-flat-version',
         template: 'api_menu_flat_version.template.html',
-        outputPath: '_includes/v2_fluid/api_menu_flat_' + currentVersion + '.html'
+        outputPath: '_includes/v2_fluid/api_menu_flat_' + currentVersion +
+                    '.html'
       });
       docs.push({
         docType: 'api-version-select',

@@ -4,6 +4,7 @@
   <title>Ionic E2E</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <!-- using relative paths in order for snapshot e2e tests to also work -->
   <link id="iosLink" ios-href="../../../bundles/ionic.ios.css" rel="stylesheet">
@@ -38,23 +39,31 @@
 
   <script src="../../../js/es6-shim.min.js"></script>
   <script src="../../../js/es6-module-loader.src.js"></script>
+  <script src="../../../js/Reflect.js"></script>
+  <script src="../../../js/zone.js"></script>
   <script src="../../../js/system.src.js"></script>
   <script>
     System.config({
       map: {
-        'angular2': '/angular2'
+        '@angular/core': '/node_modules/@angular/core/bundles/core.umd.js',
+        '@angular/compiler': '/node_modules/@angular/compiler/bundles/compiler.umd.js',
+        '@angular/common': '/node_modules/@angular/common/bundles/common.umd.js',
+        '@angular/forms': '/node_modules/@angular/forms/bundles/forms.umd.js',
+        '@angular/http': '/node_modules/@angular/http/bundles/http.umd.js',
+        '@angular/platform-browser': '/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic': '/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+        'ionic-angular': '/src'
       },
       packages: {
         'ionic-angular': {
           main: 'index'
+        },
+        'rxjs': {
+          defaultExtension: 'js'
         }
       }
     });
   </script>
-  <script src="../../../js/angular2-polyfills.js"></script>
-  <script src="../../../js/angular2.dev.js"></script>
-  <script src="../../../js/router.dev.js"></script>
-  <script src="../../../js/http.dev.js"></script>
   <script src="../../../bundles/ionic.system.js"></script>
   <script src="../../../js/Rx.js"></script>
 
@@ -106,7 +115,6 @@
 <body>
 
   <ion-app>
-    <ion-loading-icon></ion-loading-icon>
   </ion-app>
 
   <script>
@@ -115,8 +123,6 @@
     } else {
       document.body.classList.remove('rtl');
     }
-
-
     System.import('index.js').then(function(m) {}, console.error.bind(console));
   </script>
 

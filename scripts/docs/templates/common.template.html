@@ -158,6 +158,9 @@ angular_controller: APIDemoCtrl <@ endif @>
 <$ doc.name | dashCase $>
 <@ else @>
 <$ doc.name $>
+<@- if doc.directiveInfo @>
+<h3><code><$ doc.directiveInfo.properties[0].values $></code></h3>
+<@ endif -@>
 <@ endif @>
 
 <@ if doc.parent @>
@@ -176,7 +179,7 @@ Delegate: <$ doc.delegate $>
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/<$ doc.fileInfo.relativePath|replace('/home/ubuntu/ionic', '')|replace('//','/') $>#L<$ doc.location.start.line $>">
 Improve this doc
 </a>
 
@@ -191,10 +194,6 @@ Improve this doc
 <@ endblock @>
 
 
-<@- if doc.directiveInfo @>
-<h2><a class="anchor" name="<$ doc.directiveInfo.type $>" href="#<$ doc.directiveInfo.type $>"></a><$ doc.directiveInfo.type $></h2>
-<h3><$ doc.directiveInfo.properties[0].name $>: <code><$ doc.directiveInfo.properties[0].values $></code></h3>
-<@ endif -@>
 
 <!-- @usage tag -->
 <@ if doc.usage @>
@@ -331,6 +330,14 @@ Improve this doc
 <h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
 <$ outputTable(doc.outputs) $>
 <@- endif -@>
+
+
+<@ block advanced @>
+<@- if doc.advanced -@>
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<$ doc.advanced | marked $>
+<@- endif -@>
+<@ endblock @>
 
 
 <!-- related link -->

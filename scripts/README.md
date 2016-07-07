@@ -66,7 +66,7 @@ To remove the linked version of `ionic-angular` do `npm rm ionic-angular`, and t
 
 ### Running Sass Linter
 
-1. See the [Sass Guidelines](https://github.com/driftyco/ionic/blob/2.0/CONTRIBUTING.md#sass-guidelines) for editing Sass and running the linter.
+1. See the [Sass Guidelines](https://github.com/driftyco/ionic/blob/master/CONTRIBUTING.md#sass-guidelines) for editing Sass and running the linter.
 
 # Releasing
 
@@ -108,4 +108,4 @@ If you'd like to manually update the demos, follow the steps on the preview app 
 
 Ionic API demos are automatically compiled and deployed to the [ionic staging site](http://ionic-site-staging.herokuapp.com/) on every commit. No action is necessary.
 
-If you'd like to manually update the demos, clone the [`ionic-site`](https://github.com/driftyco/ionic-site) repo as a sibling of `ionic`. From `ionic` run gulp docs, and it'll compile and copy the demos to the `ionic-site` repo, ready for testing or committing.
+If you'd like to manually update the demos, clone the [`ionic-site`](https://github.com/driftyco/ionic-site) repo as a sibling of `ionic`. From `ionic` run `gulp demos` and then `gulp docs`, and it'll compile and copy the demos to the `ionic-site` repo, ready for testing.

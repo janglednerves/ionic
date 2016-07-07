@@ -3,8 +3,11 @@
 # See config at https://github.com/brigade/scss-lint/blob/master/config/default.yml
 
 exclude:
-  - 'ionic/components/slides/**'
-  - 'ionic/components.*.scss'
+  - 'src/components/slides/**'
+  - 'src/components/show-hide-when/**'
+  - 'src/components.*.scss'
+  - 'src/util/*.scss'
+  - 'src/platform/cordova.*.scss'
 
 
 linters:
