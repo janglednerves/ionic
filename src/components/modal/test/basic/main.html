@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Modals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <p>
+    <button (click)="presentModal()">Present modal, pass params</button>
+  </p>
+  <p>
+    <button (click)="presentNavigableModal()">Present modal, push page</button>
+  </p>
+  <p>
+    <button class="e2eOpenModal" (click)="presentModalChildNav()">Present modal w/ child ion-nav</button>
+  </p>
+  <p>
+    <button class="e2eOpenToolbarModal" (click)="presentToolbarModal()">Present modal w/ toolbar</button>
+  </p>
+  <p>
+    <button (click)="presentModalWithInputs()">Present modal w/ inputs</button>
+  </p>
+  <p>
+    <button (click)="presentModalCustomAnimation()">Modal: Custom Animation</button>
+  </p>
+  <p>
+    {{platforms | json}}
+  </p>
+
+</ion-content>
