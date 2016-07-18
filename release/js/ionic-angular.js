@@ -13107,7 +13107,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
     replace: true,
     transclude: true,
     scope: {
-      autoPlay: '@',
+      autoPlay: '=',
       slideDuration: '@',
       doesContinue: '@',
       slideInterval: '@',
