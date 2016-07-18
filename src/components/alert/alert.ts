@@ -4,7 +4,7 @@ import { App } from '../app/app';
 import { AlertCmp } from './alert-component';
 import { AlertOptions, AlertInputOptions } from './alert-options';
 import { isPresent } from '../../util/util';
-import { NavOptions } from '../nav/nav-options';
+import { NavOptions } from '../nav/nav-interfaces';
 import { ViewController } from '../nav/view-controller';
 
 
@@ -82,7 +82,7 @@ export class Alert extends ViewController {
   }
 
   /**
-   * @param {string} cssClass CSS class name to add to the alert's outer wrapper
+   * @param {string} cssClass Set the CSS class names on the alert's outer wrapper.
    */
   setCssClass(cssClass: string) {
     this.data.cssClass = cssClass;

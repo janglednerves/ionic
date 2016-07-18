@@ -176,7 +176,7 @@ ion-tabbar.show-tabbar {
   opacity: 1;
 }
 
-[tabbarPlacement=top] > ion-tabbar {
+[tabsPlacement=top] > ion-tabbar {
   top: 0;
   bottom: auto;
 }
@@ -211,7 +211,7 @@ ion-content.js-scroll > scroll-content {
   will-change: initial;
 }
 
-.disable-scroll ion-page > ion-content > scroll-content {
+.disable-scroll ion-page scroll-content {
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -219,7 +219,6 @@ ion-content.js-scroll > scroll-content {
 
 [nav-viewport],
 [nav-portal],
-[tab-portal],
 .nav-decor {
   display: none;
 }
