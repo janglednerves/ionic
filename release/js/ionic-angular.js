@@ -4247,6 +4247,11 @@ IonicModule
    * explicitly told to do so.
    */
   'stop',
+  /**
+   * @ngdoc method
+   * @name $ionicSlideBoxDelegate#start
+   * @description Start sliding again if the slideBox was stopped.
+   */
   'autoPlay',
   /**
    * @ngdoc method
@@ -13102,7 +13107,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
     replace: true,
     transclude: true,
     scope: {
-      autoPlay: '=',
+      autoPlay: '@',
       slideDuration: '@',
       doesContinue: '@',
       slideInterval: '@',
